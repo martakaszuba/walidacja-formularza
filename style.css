@@ -1,0 +1,45 @@
+
+body {
+    background-image: linear-gradient(to left, #f2d071, #e9b95f, #dfa24f, #d48c41, #c87536);   
+    height:700px;
+}
+
+#main {
+   width:42%;
+   height:590px;
+   margin:0 auto;
+   padding:10px;
+   border-radius:3%;
+}
+
+button {
+   margin:15px;
+}
+
+label {
+   padding:0 20px;
+}
+
+#info {
+color:#5A6268;
+font-size:14px;
+}
+
+.light {
+   background-color: #f7e0a3;
+}
+
+#nag {
+   text-align:center;
+   width:50%;
+   margin:30px auto;
+}
+
+#err {
+   color:red;
+}
+
+#m {
+margin:250px auto;
+width:80%;
+}
