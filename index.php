@@ -2,12 +2,9 @@
 
 $txt = "";
 if (isset($_POST["submit"])){
-    $name = $_POST["name"];
-    $name = trim($name);
-    $name = htmlspecialchars($name);
-    $surname = $_POST["surname"];
-    $surname = trim($surname);
-    $surname = htmlspecialchars($surname);
+    $nick= $_POST["nick"];
+    $nick = trim($nick);
+    $nick = htmlspecialchars($nick);
     $password = $_POST["password"];
     $password = trim($password);
     $password = htmlspecialchars($password);
@@ -18,12 +15,8 @@ if (isset($_POST["submit"])){
     $email = trim($email);
     $email = htmlspecialchars($email);
 
-    if (Checkstr($name)){
-        $txt = "Wpisz prawidłowe imię!";
-    }
-
-    else if (Checkstr($surname)){
-        $txt = "Wpisz prawidłowe nazwisko!";
+    if (Checkstr($nick)){
+        $txt = "Wpisz prawidłowy nick!";
     }
 
     else if (Checkpass($password)){
@@ -44,7 +37,7 @@ if (isset($_POST["submit"])){
     }
 }
 function Checkstr($p){
-    if (strlen($p) === 0 || strlen($p)>35){
+    if (strlen($p) === 0 || strlen($p)>55){
         return true;
     }
     if (!preg_match("/[\d<>)()*&^%$?:;+=_-'#@!]/", $p)){
@@ -82,17 +75,12 @@ if (strlen($pss) === 0 || strlen($pss)<8){
     <div id="main" class="light shadow p-3 mb-5">
     <form method="post" onsubmit = "return Checkform()">
             <div class="form-group">
-                    <label for="name">Imię:</label>
+                    <label for="nick">Nick:<br> <span id="info">(nick musi się składać wyłącznie z liter i cyfr) </span>
+                </label>
                     <div class="col-sm-6">
-    <input type="text" name="name" id="name" class="form-control form-control-sm"/>
+    <input type="text" name="nick" id="nick" class="form-control form-control-sm"/>
     </div>
 </div>
-    <div class="form-group">
-            <label for="name">Nazwisko:</label>
-            <div class="col-sm-6">
-    <input type="text" name="surname" id="surname" class="form-control form-control-sm"/>
-    </div>
-    </div>
 
     <div class="form-group">
             <label for="name">Hasło:<br> <span id="info">(hasło musi się składać z co najmniej 8 znaków w tym co najmniej jednej liczby) </span></label>
