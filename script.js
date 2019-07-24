@@ -13,7 +13,7 @@ form.addEventListener("submit", function(e){
 
     if (Checkstr(nick)){
         e.preventDefault();
-        err.innerHTML = "Wpisz prawidłowe imię!"
+        err.innerHTML = "Wpisz prawidłowy nick!"
     }
     
     else if (Checkpass(password)){
@@ -23,19 +23,13 @@ form.addEventListener("submit", function(e){
     
     else if (password !== repeatpass){
         e.preventDefault();
-        err.innerHTML = "Hasła się nie zgadzają!"
-    }
-    
-    else if (password !== repeatpass){
-        e.preventDefault();
-        err.innerHTML ="Hasła się nie zgadzają!"
+        err.innerHTML = "Hasła nie są sobie równe!"
     }
     
     else if (!validateEmail(email)){
         e.preventDefault();
         err.innerHTML ="Nieprawidłowy email!"
     }
-    
     })
 
 function Checkstr(str){
