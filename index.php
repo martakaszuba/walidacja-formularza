@@ -1,8 +1,9 @@
 <?php
-
+session_start();
 $txt = "";
+
 if (isset($_POST["submit"])){
-    $nick= $_POST["nick"];
+    $nick = $_POST["nick"];
     $nick = trim($nick);
     $nick = htmlspecialchars($nick);
     $password = $_POST["password"];
@@ -18,29 +19,27 @@ if (isset($_POST["submit"])){
     if (Checkstr($nick)){
         $txt = "Wpisz prawidłowy nick!";
     }
-
     else if (Checkpass($password)){
         $txt = "Hasło jest niepoprawne!";
     }
-
     else if ($password !== $repeatpass){
         $txt = "Hasła nie są sobie równe!";
     }
-
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $txt = "Nieprawidłowy email !";
     }
-
     else {
+        $_SESSION["nick"] = $nick;
         header("Location:result.php");
         die;
     }
 }
-function Checkstr($p){
-    if (strlen($p) === 0 || strlen($p)>55){
+
+function Checkstr($s){
+    if (strlen($s) === 0 || strlen($s)>35){
         return true;
     }
-    if (!preg_match("/[\d<>)()*&^%$?:;+=_-'#@!]/", $p)){
+    if (preg_match("/[^\wńżźćńśęąłóŚÓŁĘĄŻŹŃĆ]/", $s)){
         return true;
     }
 return false;
@@ -54,8 +53,8 @@ if (strlen($pss) === 0 || strlen($pss)<8){
         return true;
     }
     return false;
-
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -73,10 +72,9 @@ if (strlen($pss) === 0 || strlen($pss)<8){
     <h5>Żeby się zarejestrować wypełnij poprawnie poniższy formularz</h5>
     </div>
     <div id="main" class="light shadow p-3 mb-5">
-    <form method="post" onsubmit = "return Checkform()">
+    <form method="post">
             <div class="form-group">
-                    <label for="nick">Nick:<br> <span id="info">(nick musi się składać wyłącznie z liter i cyfr) </span>
-                </label>
+                    <label for="name">Nick:<br> <span id="info">(nick musi się składać wyłącznie z liter i cyfr) </span></label>
                     <div class="col-sm-6">
     <input type="text" name="nick" id="nick" class="form-control form-control-sm"/>
     </div>
@@ -103,10 +101,12 @@ if (strlen($pss) === 0 || strlen($pss)<8){
     </div>
     </div>
     <button class="btn btn-secondary" name="submit" id="btn">Zarejestruj się</button>
-    <p id="err"><?php echo $txt;?></p>
+    <p id="err">
+        <?php echo $txt;
+        ?>
+    </p>
     </form>
     </div>
-
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

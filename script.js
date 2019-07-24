@@ -1,5 +1,6 @@
 
-function Checkform(){
+var form = document.querySelector("form");
+form.addEventListener("submit", function(e){
     var nick = document.querySelector("#nick").value;
     var password = document.querySelector("#password").value;
     var repeatpass =  document.querySelector("#repeatpass").value; 
@@ -10,42 +11,39 @@ function Checkform(){
     repeatpass = repeatpass.trim();
     email = email.trim();
 
-if (Checkstr(nick)){
-    err.innerHTML = "Wpisz prawidłowe imię!"
-    return false;
-}
-
-else if (Checkpass(password)){
-    err.innerHTML = "Wpisz prawidłowe hasło!"
-    return false;
-}
-
-else if (password !== repeatpass){
-    err.innerHTML = "Hasła się nie zgadzają!"
-    return false;
-}
-
-else if (password !== repeatpass){
-    err.innerHTML ="Hasła się nie zgadzają!"
-    return false;
-}
-
-else if (!validateEmail(email)){
-    err.innerHTML ="Nieprawidłowy email!"
-    return false;
-}
-
-else {
-    return true;
-}
-}
+    if (Checkstr(nick)){
+        e.preventDefault();
+        err.innerHTML = "Wpisz prawidłowe imię!"
+    }
+    
+    else if (Checkpass(password)){
+        e.preventDefault();
+        err.innerHTML = "Wpisz prawidłowe hasło!"
+    }
+    
+    else if (password !== repeatpass){
+        e.preventDefault();
+        err.innerHTML = "Hasła się nie zgadzają!"
+    }
+    
+    else if (password !== repeatpass){
+        e.preventDefault();
+        err.innerHTML ="Hasła się nie zgadzają!"
+    }
+    
+    else if (!validateEmail(email)){
+        e.preventDefault();
+        err.innerHTML ="Nieprawidłowy email!"
+    }
+    
+    })
 
 function Checkstr(str){
     if (str.length === 0){
-        return true
+        return true;
     }
-    else if (str.match(/[\d<>)()*&^%$?:;+=_-"'#@!]/)){
-        return true
+    else if (str.match(/[^\wńżźćńśęąłó]/gi)){
+        return true;
     }
     return false;
 }

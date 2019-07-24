@@ -1,4 +1,14 @@
 
+<?php
+session_start();
+if (isset($_SESSION["nick"])){
+    $nick = $_SESSION["nick"];
+}
+else {
+    $nick ="";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +21,14 @@
 </head>
 <body>
     <div id="m">
-<h4>Udało Ci się zarejestrować! Aby potwierdzić kliknij na maila podanego w mailu!</h4>
+        <?php
+if (empty($nick)){
+echo "";
+}
+else {
+    echo "<h4>Gratulacje $nick udało Ci się zarejestrować! Aby potwierdzić rejestrację kliknij na link podany w mailu</h4>";
+}
+        ?>
 </div>
 </body>
 </html>
