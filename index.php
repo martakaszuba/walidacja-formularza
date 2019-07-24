@@ -18,12 +18,12 @@ if (isset($_POST["submit"])){
     $email = trim($email);
     $email = htmlspecialchars($email);
 
-    if (strlen($name) === 0){
-        $txt = "Wpisz imię";
+    if (Checkstr($name)){
+        $txt = "Wpisz prawidłowe imię!";
     }
 
-    else if (strlen($surname) === 0){
-        $txt = "Wpisz nazwisko";
+    else if (Checkstr($surname)){
+        $txt = "Wpisz prawidłowe nazwisko!";
     }
 
     else if (Checkpass($password)){
@@ -43,14 +43,25 @@ if (isset($_POST["submit"])){
         die;
     }
 }
-function Checkpass($p){
-    if (strlen($p) === 0 || strlen($p)<8){
+function Checkstr($p){
+    if (strlen($p) === 0 || strlen($p)>35){
         return true;
     }
     if (!preg_match("/[\d<>)()*&^%$?:;+=_-'#@!]/", $p)){
         return true;
     }
 return false;
+}
+
+function Checkpass($pss){
+if (strlen($pss) === 0 || strlen($pss)<8){
+        return true;
+    }
+    if (!preg_match("/\d/", $pss)){
+        return true;
+    }
+    return false;
+
 }
 ?>
 
