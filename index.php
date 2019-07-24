@@ -26,7 +26,7 @@ if (isset($_POST["submit"])){
         $txt = "Hasła nie są sobie równe!";
     }
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $txt = "Nieprawidłowy email !";
+        $txt = "Nieprawidłowy email!";
     }
     else {
         $_SESSION["nick"] = $nick;
@@ -65,7 +65,7 @@ if (strlen($pss) === 0 || strlen($pss)<8){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Walidacj formularza - Marta Kaszuba</title>
+    <title>Walidacja formularza - Marta Kaszuba</title>
 </head>
 <body>
     <div id="nag">
