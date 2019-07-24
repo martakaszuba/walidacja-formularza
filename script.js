@@ -1,24 +1,17 @@
 
 function Checkform(){
-    var name = document.querySelector("#name").value;
-    var surname = document.querySelector("#surname").value;
+    var nick = document.querySelector("#nick").value;
     var password = document.querySelector("#password").value;
     var repeatpass =  document.querySelector("#repeatpass").value; 
     var email =  document.querySelector("#email").value; 
     var err = document.querySelector("#err");
-    name = name.trim();
-    surname = surname.trim();
+    nick = nick.trim();
     password = password.trim();
     repeatpass = repeatpass.trim();
     email = email.trim();
 
-if (Checkstr(name)){
+if (Checkstr(nick)){
     err.innerHTML = "Wpisz prawidłowe imię!"
-    return false;
-}
-
-else if (Checkstr(surname)){
-    err.innerHTML = "Wpisz prawidłowe nazwisko!"
     return false;
 }
 
