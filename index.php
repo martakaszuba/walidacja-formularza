@@ -17,7 +17,7 @@ if (isset($_POST["submit"])){
     $email = htmlspecialchars($email);
 
     if (Checkstr($nick)){
-        $txt = "Wpisz prawidłowy nick!";
+        $txt = "Nick jest niepoprawny!";
     }
     else if (Checkpass($password)){
         $txt = "Hasło jest niepoprawne!";
@@ -65,7 +65,7 @@ if (strlen($pss) === 0 || strlen($pss)<8){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Document</title>
+    <title>Walidacj formularza - Marta Kaszuba</title>
 </head>
 <body>
     <div id="nag">
